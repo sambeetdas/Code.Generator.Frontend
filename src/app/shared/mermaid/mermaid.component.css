@@ -1,0 +1,6 @@
+:host ::ng-deep svg {
+  display: block !important;
+  width: 100%;
+  height: auto;
+  min-height: 50px; /* Force it to have some height */
+}

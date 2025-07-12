@@ -1,0 +1,30 @@
+<div class="project-detail-container" *ngIf="project">
+  <h2>{{ project.name }}</h2>
+  <p>{{ project.description }}</p>
+
+  <div class="diagram-section">
+    <h3>Design Preview</h3>
+    <button (click)="onGenerateDiagram()" class="btn btn-secondary mb-3">Generate Diagram</button>
+    <div class="border border-secondary" *ngIf="mermaidScript">
+      <app-mermaid [chart]="mermaidScript"></app-mermaid>
+    </div>   
+  </div>
+
+  <div class="design-modification-section">
+    <h3>Modify Design</h3>
+    <button (click)="onUpdateDesign()" class="btn btn-primary mb-3">Update Design</button>
+    <br>
+    <div class="border border-secondary">
+      <textarea [(ngModel)]="mermaidScript" class="form-control"></textarea> 
+    </div>
+      
+  </div>
+
+  <div class="code-generation-section">
+    <h3>Generated Code</h3>
+    <button (click)="onGenerateCode()" class="btn btn-secondary mb-3">Generate Code</button>
+    <pre class="border border-secondary" *ngIf="generatedCode">{{ generatedCode }}</pre>
+  </div>
+
+  <app-project-deploy [projectId]="project.id"></app-project-deploy>
+</div>

@@ -1,0 +1,17 @@
+<div class="deploy-section mt-4">
+  <h3>Deploy Project</h3>
+  <form [formGroup]="deployForm" (ngSubmit)="onDeploy()">
+    <div class="form-group">
+      <label for="environment">Environment</label>
+      <select id="environment" formControlName="environment" class="form-control">
+        <option value="development">Development</option>
+        <option value="staging">Staging</option>
+        <option value="production">Production</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="deployForm.invalid">Deploy</button>
+  </form>
+  <div *ngIf="deploymentMessage" class="alert alert-info mt-3">
+    {{ deploymentMessage }}
+  </div>
+</div>
